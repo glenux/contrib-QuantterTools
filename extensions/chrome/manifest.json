@@ -1,0 +1,12 @@
+{
+  "name": "Quantter Extension",
+  "version": "1.0",
+  "description": "Quantter extension for users to update their activities.",
+  "browser_action": {
+    "default_icon": "icon.jpg",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "http://api.flickr.com/"
+  ]
+}
