@@ -1,12 +1,65 @@
 <html>
+<head>
+	<title>Quantter Extension</title>
+	<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.6.custom.css" type="text/css" media="screen, projection" />
+	
+	<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8"> 
+		$(document).ready(function(){
+
+
+			$('#message').focus(function() {
+			    $('#message').val("");
+			});
+			
+			$('#message').blur(function() {
+				if ("" == $('#message').val) {
+					$('#message').val("Quantify yourself, e.g. I did a great swim today. #swim:30min");
+				}
+			    
+			});
+			
+			// Set Datepicker Field to Today
+			var d = new Date();
+			$("#datepicker").val(d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate());
+			
+			// Handle form submission
+			$("#submit").click(function() {
+				var params = 'message='+ $('#message').val + '&method=' + $('#method').val + '&api_key=' + $('#api_key').val;
+				$.ajax({
+					type: "POST",
+					url: "http://beta.quantter.com/api/rest",
+					data: params,
+					success: function() {
+					  $('#quantter_form').html("<div id='message'></div>");
+					  $('#message').html("<h2>Quantt Sent!</h2><a href='popup.html' id='reload'>Another one!</a>");
+					},
+					error: function() {
+					  $('#quantter_form').html("<div id='message'></div>");
+					  $('#message').html("<h2>An Error has occurred.</h2><a href='popup.html' id='reload'>Try again!</a>");
+					},
+					});
+				return false;
+			});
+			
+
+
+		});
+	</script>
+</head>
 <body>
-<form method="post" action="http://beta.quantter.com">
-<textarea rows="5" cols="20" wrap="physical" name="message">
-Quantify yourself
-</textarea>
+<div id="quantter_form">
+<form method="post" action="">
 <input type="hidden" name="method" value="quantter.effort.create">
-<input type="text" name="api_key" value="agtiZXRhLXF1YW50dHIMCxIEVXNlchjKrAYM">
-<input type="submit" value="Submit">
+
+<textarea rows="5" cols="20" wrap="physical" name="message" id="message">
+Quantify yourself, e.g. I did a great swim today. #swim:30min
+</textarea>
+<div><label><input type="submit" id="submit" value="Submit" label="Submit"></div>
+<div><label>Key</label> <input type="text" name="api_key" value="agtiZXRhLXF1YW50dHIMCxIEVXNlchjKrAYM"></div>
+<div><label>Date</label> <input type="text" id="datepicker" value=""></div>
+
 </form>
+</div>
 </html>
 </body>
