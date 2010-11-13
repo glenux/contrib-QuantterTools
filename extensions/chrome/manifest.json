@@ -7,6 +7,6 @@
     "popup": "popup.html"
   },
   "permissions": [
-    "http://beta.quantter.com/"
+    "http://localhost:8080/"
   ]
 }
