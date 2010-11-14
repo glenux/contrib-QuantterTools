@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+	<script type="text/javascript" charset="utf-8">
+	
+	
+
+function performCommand(event)
+{
+ if (event.command === "sayHello") {
+	var active_window = safari.application.activeBrowserWindow;
+	var active_tab = active_window.openTab();
+	active_tab.url = safari.extension.baseURI + "form.html";
+	active_tab.dispatchMessage("message", safari.extension.settings.api_key);
+	
+ }
+}
+
+// if event handlers are in the global HTML page,
+// register with application:
+safari.application.addEventListener("command", performCommand, true);
+</script>
+</head>
+<body>
+</body>
+</html>

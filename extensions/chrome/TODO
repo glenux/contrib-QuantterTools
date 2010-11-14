@@ -1,0 +1,2 @@
+* remove hardcoded API key
+* set to correct API url (beta.quantter.com)

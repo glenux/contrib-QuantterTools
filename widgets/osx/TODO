@@ -1,0 +1,3 @@
+* API key is still hardcoded
+* no form validation / API error handling
+* add 'Success' page

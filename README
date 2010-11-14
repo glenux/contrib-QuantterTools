@@ -4,8 +4,12 @@ Quantter is releasing the following tools under an MIT license. Enjoy!
 
 # Wishlist
 
+* Code reviews & cleanup
+* build system & configuration so hostname is not hardcoded in each extension
+* abstract common js code so it can be re-used in multiple extensions
 * Browser extensions to help people input quantts (Chrome, Firefox, Safari)
-* Desktop Widgets to help people input quantts (OSX, Windows)
+* Desktop Widgets to help people input quantts (OSX, Windows, Linux)
+* help implementing XMPP email handling in Python
 
 
 

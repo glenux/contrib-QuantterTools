@@ -1,0 +1,3 @@
+* api_key is saved in settings, but still needs to be read & actually used.
+* better UI design
+* cleaner icons

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quantter</title> 
+
+<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8"> 
+	
+
+	
+	safari.self.addEventListener("message", handleThis, false);
+	
+	function handleThis (msg) {
+		alert('test');
+	}
+
+	
+	$(document).ready(function(){
+		var defaultmsg = "Quantify yourself ... I did a great swim today #swim:30min";
+		
+		
+		
+		$('#message').focus(function() {
+			if (defaultmsg == $('#message').val()) {
+				$('#message').val("");
+			}				
+			
+		    
+		});
+		
+		$('#message').blur(function() {
+			if ("" == $('#message').val()) {
+				$('#message').val(defaultmsg);
+			}
+		    
+		});
+		
+		// Set Datepicker Field to Today
+		var d = new Date();
+		$("#datepicker").val(d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate());
+		
+		// Handle form submission
+		$("#submit").click(function() {
+			
+			var postdata = 'message='+ $('#message').val() + '&method=' + $('#method').val() + '&api_key=' + $('#api_key').val();
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:8080/api/rest",
+				data: postdata,
+				success: function(data) {
+				  	$('#quantter_form').html("<div id='message' style='margin-top:40px'></div>");
+				  	$('#message').html("<center><h2>Success: Quantt Sent!</h2><a href='form.html' id='reload'>Another one!</a></center>");
+			      
+				},
+				error: function(data) {
+				  $('#quantter_form').html("<div id='message'></div>");
+				  $('#message').html("<h2>An Error has occurred.</h2><a href='form.html' id='reload'>Try again!</a>");
+				},
+				});
+			return false;
+		});
+		
+		$("#options_button").click(function() {
+			$('#options').toggle()
+		});
+
+
+	});
+</script>
+
+</head> 
+
+<body> 
+	
+	<center>
+	<div id="quantter_form" class='main'>
+	<img src='img/logo.gif'>
+	<form method="post" action="">
+	<input type="hidden" name="method" value="quantter.effort.create" id="method">
+	<textarea rows="5" cols="20" wrap="physical" name="message" id="message">Quantify yourself ... I did a great swim today #swim:30min</textarea>
+	<div><input type="submit" id="submit" value="Quantt It!" label="Quantt It!"></div>
+	<div id='options' style='display:none; margin-top:10px'>
+	<div><label>API Key</label> <input type="text" name="api_key" value="agtiZXRhLXF1YW50dHIMCxIEVXNlchjKrAYM" id="api_key"></div>
+	</div>
+	</form>
+	</center>
+</body>
+</html>
