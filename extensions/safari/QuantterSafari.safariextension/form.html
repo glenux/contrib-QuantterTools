@@ -45,7 +45,7 @@
 			var postdata = 'message='+ $('#message').val() + '&method=' + $('#method').val() + '&api_key=' + $('#api_key').val();
 			$.ajax({
 				type: "POST",
-				url: "http://localhost:8080/api/rest",
+				url: "http://beta.quantter.com/api/rest",
 				data: postdata,
 				success: function(data) {
 				  	$('#quantter_form').html("<div id='message' style='margin-top:40px'></div>");

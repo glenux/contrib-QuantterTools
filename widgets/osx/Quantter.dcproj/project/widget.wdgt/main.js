@@ -128,7 +128,7 @@ function textareaSubmit(event)
     alert(postdata);
 				$.ajax({
 					type: "POST",
-					url: "http://localhost:8080/api/rest",
+					url: "http://beta.quantter.com/api/rest",
 					data: postdata,
 					success: function(data) {
 					  	$('#message').value = "";
