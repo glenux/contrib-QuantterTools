@@ -1,0 +1,5 @@
+# defines the quantt syntax
+# + this is a quantt
+# - this is not a quantt
++ #coded:1h12min
+- coded:1h12min
